@@ -1,8 +1,8 @@
 {
-  "name": "webduino-bit-module-button",
+  "name": "webduino-bit-module-led-matrix",
   "version": "1.0.0",
-  "description": "Button Module for Webduino:bit",
-  "main": "BitButton.js",
+  "description": "LED Matrix Module for Webduino:bit",
+  "main": "WS2812-blockly.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +11,7 @@
   "keywords": [
     "arduino",
     "webduino",
-    "button",
+    "led",
     "webduino:bit"
   ],
   "dependencies": {

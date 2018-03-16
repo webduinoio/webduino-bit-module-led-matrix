@@ -1,11 +1,11 @@
 # webduino-bit-module-button
 
-Module for Webduino:bit Button.
+Module for Webduino:bit LED Matrix.
 
 ## Installation
 
 ```shell
-bower install https://github.com/webduinoio/webduino-bit-module-button.git
+bower install https://github.com/webduinoio/webduino-bit-module-led-matrix.git
 ```
 
 ## License

@@ -7,16 +7,22 @@ Blockly.JavaScript['matrix_new'] = function (block) {
 
 Blockly.JavaScript['matrix_color'] = function (block) {
   var variable_matrix = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('matrix_'), Blockly.Variables.NAME_TYPE);
-  var leds = [];
-  for (var i = 0; i < ledCount; i++) {
-    var id = i.toString();
-
-    if (i < 10) {
-      id = '0' + i.toString();
+  var leds = '';
+  var toHex = function (num) {
+    var str = num.toString(16);
+    if (parseInt(num) < 16) {
+      str = '0' + str;
     }
-    leds.push(id + block.getFieldValue('led_' + i + '_').replace('#', ''));
+    return str;
+  };
+  var getLedString = function (id, color) {
+    return (toHex(id) + color.substring(1)).toLowerCase();
+  };
+
+  for (var i = 0; i < ledCount; i++) {
+    var color = block.getFieldValue('led_' + i + '_');
+    leds += getLedString(i, color);
   }
-  leds = leds.join('').toLowerCase();
   var code = variable_matrix + '.setColor(\'' + leds + '\');\n';
   return code;
 };

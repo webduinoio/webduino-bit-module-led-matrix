@@ -1,7 +1,7 @@
 var ledCount = 25;
 
 Blockly.JavaScript['matrix_new'] = function (block) {
-  var code = 'getWS2812(board, 4, ' + ledCount + ')';
+  var code = 'getMatrix(board, 4, ' + ledCount + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 

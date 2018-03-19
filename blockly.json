@@ -6,8 +6,8 @@
     "blockly/javascript.js"
   ],
   "dependencies": [
-    "WS2812-blockly.js",
-    "WS2812.js"
+    "LedMatrix-blockly.js",
+    "LedMatrix.js"
   ],
   "msg": "blockly/msg",
   "blocksMsg": "blockly/msg/blocks",

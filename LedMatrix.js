@@ -16,7 +16,7 @@
   var Module = scope.Module;
   var _backlight;
 
-  function WS2812(board, pin, leds) {
+  function Matrix(board, pin, leds) {
     Module.call(this);
     this._board = board;
     self = this;
@@ -37,9 +37,9 @@
       });
   }
 
-  WS2812.prototype = proto = Object.create(Module.prototype, {
+  Matrix.prototype = proto = Object.create(Module.prototype, {
     constructor: {
-      value: WS2812
+      value: Matrix
     },
     backlight: {
       get: function() {
@@ -105,5 +105,5 @@
     return str;
   }
 
-  scope.module.WS2812 = WS2812;
+  scope.module.Matrix = Matrix;
 }));

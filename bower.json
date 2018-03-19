@@ -1,7 +1,7 @@
 {
   "name": "webduino-bit-module-led-matrix",
   "description": "LED Matrix Module for Webduino:bit",
-  "main": "WS2812-blockly.js",
+  "main": "LedMatrix-blockly.js",
   "authors": "",
   "license": "MIT",
   "keywords": [

@@ -6,6 +6,18 @@
     </value>
   </block>
   <block type="matrix_color"></block>
+  <block type="matrix_color_single">
+    <value name="led_">
+      <block type="math_number">
+        <field name="NUM">0</field>
+      </block>
+    </value>
+    <value name="color_">
+      <block type="colour_picker">
+        <field name="COLOUR">#ff0000</field>
+      </block>
+    </value>
+  </block>
   <block type="matrix_off"></block>
   <block type="matrix_brightness">
     <value name="brightness_">

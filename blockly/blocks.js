@@ -62,12 +62,12 @@ Blockly.Blocks['matrix_color_single'] = {
   init: function () {
     this.appendValueInput('led_')
         .setCheck('Number')
-        .appendField('設定')
+        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_LED_SET)
         .appendField(new Blockly.FieldVariable('matrix'), 'matrix_')
-        .appendField('第');
+        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_LED_NUMBER);
     this.appendValueInput('color_')
         .setCheck(null)
-        .appendField('顆色彩為');
+        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_LED_COLOR_TO);
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);

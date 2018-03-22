@@ -14,7 +14,7 @@
     </value>
     <value name="color_">
       <block type="colour_picker">
-        <field name="COLOUR">#ff0000</field>
+        <field name="COLOUR">#ffffff</field>
       </block>
     </value>
   </block>

@@ -19,7 +19,7 @@ Blockly.Blocks['matrix_color'] = {
         .appendField(new Blockly.FieldVariable('matrix'), 'matrix_');
     this.appendDummyInput()
         .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_LED_SELECT_COLOR)
-        .appendField(new Blockly.CustomFieldColour('#ff0000'), 'mcolor_');
+        .appendField(new Blockly.CustomFieldColour('#ffffff'), 'mcolor_');
     this.appendDummyInput()
         .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_0_')
         .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_1_')

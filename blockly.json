@@ -1,6 +1,6 @@
 {
   "types": ["matrix_new", "matrix_color", "matrix_brightness", "matrix_off"],
-  "category": "catBoardGroup",
+  "category": "toolbox",
   "scripts": [
     "blockly/blocks.js",
     "blockly/javascript.js"

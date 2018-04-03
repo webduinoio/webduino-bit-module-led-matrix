@@ -31,7 +31,7 @@ Blockly.JavaScript['matrix_color_single'] = function(block) {
   var variable_matrix_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('matrix_'), Blockly.Variables.NAME_TYPE);
   var value_led_ = Blockly.JavaScript.valueToCode(block, 'led_', Blockly.JavaScript.ORDER_ATOMIC);
   var value_color_ = Blockly.JavaScript.valueToCode(block, 'color_', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = variable_matrix_ + '.setColor((--' + value_led_ + '), ' + value_color_ + ');\n';
+  var code = variable_matrix_ + '.setColor((' + value_led_ + ' - 1), ' + value_color_ + ');\n';
   return code;
 };
 

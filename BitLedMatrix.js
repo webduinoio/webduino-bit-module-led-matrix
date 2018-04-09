@@ -32,7 +32,7 @@
     }
     board.send(cmd);
     board.on(webduino.BoardEvent.SYSEX_MESSAGE,
-      function(event) {
+      function (event) {
         var m = event.message;
       });
   }
@@ -42,10 +42,10 @@
       value: Matrix
     },
     backlight: {
-      get: function() {
+      get: function () {
         return _backlight;
       },
-      set: function(val) {
+      set: function (val) {
         _backlight = val;
       }
     }
@@ -60,6 +60,8 @@
     var cmd = [0xF0, 0x04, 0x21, 0x03];
     if (arguments.length == 1) {
       data = led;
+      this.setColorByPiece(data);
+      return;
     } else {
       data = data.concat(toHex(led));
       data = data.concat(color.substring(1));
@@ -70,6 +72,25 @@
     cmd.push(0xF7);
     this._board.send(cmd);
     this._board.flush();
+  }
+
+  proto.setColorByPiece = function (allData) {
+    var self = this;
+
+    function sendPiece(data) {
+      var cmd = [0xF0, 0x04, 0x21, 0x03];
+      for (var i = 0; i < data.length; i++) {
+        cmd.push(data.charCodeAt(i));
+      }
+      cmd.push(0xF7);
+      self._board.send(cmd);
+      self._board.flush();
+    }
+    // the maximum packet size is 64 bytes
+    sendPiece(allData.substring(0, 56));
+    sendPiece(allData.substring(56, 112));
+    sendPiece(allData.substring(112, 168));
+    sendPiece(allData.substring(168));
   }
 
   proto.setColor64 = function (led, color) {

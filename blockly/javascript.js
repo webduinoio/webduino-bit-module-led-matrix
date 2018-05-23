@@ -47,3 +47,9 @@ Blockly.JavaScript['matrix_off'] = function (block) {
   var code = variable_matrix_ + '.off();\n';
   return code;
 };
+
+Blockly.JavaScript['matrix_character'] = function (block) {
+  var variable_matrix_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('matrix_'), Blockly.Variables.NAME_TYPE);
+  var code = variable_matrix_ + '.off();\n';
+  return code;
+};

@@ -112,12 +112,12 @@ Blockly.Blocks['matrix_character'] = {
   init: function () {
     this.appendValueInput('led_')
         .setCheck('Number')
-        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_CHARACTER)
+        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_LED_SET)
         .appendField(new Blockly.FieldVariable('matrix'), 'matrix_')
-        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_CHARACTER_SHOW);
+        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_LED_NUMBER);
     this.appendValueInput('color_')
         .setCheck(null)
-        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_CHARACTER_COLOR_TO);
+        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_LED_COLOR_TO);
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);

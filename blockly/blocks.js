@@ -110,8 +110,8 @@ Blockly.Blocks['matrix_off'] = {
 
 Blockly.Blocks['matrix_character'] = {
   init: function () {
-    this.appendValueInput('data')
-        .setCheck(null)
+    this.appendValueInput('led_')
+        .setCheck('Number')
         .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_CHARACTER)
         .appendField(new Blockly.FieldVariable('matrix'), 'matrix_')
         .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_CHARACTER_SHOW);

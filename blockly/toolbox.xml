@@ -27,9 +27,9 @@
     </value>
   </block>
   <block type="matrix_character">
-    <value name="char_">
-      <block type="text">
-        <field name="TEXT">A</field>
+    <value name="led_">
+      <block type="math_number">
+        <field name="NUM">1</field>
       </block>
     </value>
     <value name="color_">

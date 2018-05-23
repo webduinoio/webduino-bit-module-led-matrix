@@ -94,7 +94,7 @@ Blockly.Blocks['matrix_brightness'] = {
     this.setHelpUrl('');
   }
 };
-
+/*
 Blockly.Blocks['matrix_off'] = {
   init: function () {
     this.appendDummyInput()
@@ -107,7 +107,7 @@ Blockly.Blocks['matrix_off'] = {
     this.setHelpUrl('');
   }
 };
-
+*/
 Blockly.Blocks['matrix_character'] = {
   init: function () {
     this.appendValueInput('led_')

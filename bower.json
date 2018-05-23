@@ -1,5 +1,5 @@
 {
-  "name": "webduino-bit-module-led-matrix",
+  "name": "webduino-bit-module-led-matrix-eric",
   "description": "LED Matrix Module for Webduino:bit",
   "main": "BitLedMatrix-blockly.js",
   "authors": "",

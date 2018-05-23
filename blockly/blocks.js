@@ -107,3 +107,22 @@ Blockly.Blocks['matrix_off'] = {
     this.setHelpUrl('');
   }
 };
+
+Blockly.Blocks['matrix_character'] = {
+  init: function () {
+    this.appendValueInput('data')
+        .setCheck(null)
+        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_CHARACTER)
+        .appendField(new Blockly.FieldVariable('matrix'), 'matrix_')
+        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_CHARACTER_SHOW);
+    this.appendValueInput('color_')
+        .setCheck(null)
+        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_CHARACTER_COLOR_TO);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(65);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};                                                                                                                                                             

@@ -5,3 +5,6 @@ Blockly.Msg.WEBDUINO_LED_MATRIX_LED_BRIGHTNESS = "Brightness (1~127)";
 Blockly.Msg.WEBDUINO_LED_MATRIX_LED_NUMBER = "color of #";
 Blockly.Msg.WEBDUINO_LED_MATRIX_LED_COLOR_TO = "LED to";
 Blockly.Msg.WEBDUINO_LED_MATRIX_CLOSE = "Turn off";
+Blockly.Msg.WEBDUINO_LED_MATRIX_CHARACTER_SET = "Set"
+Blockly.Msg.WEBDUINO_LED_MATRIX_CHARACTER_SHOW = "show character";
+Blockly.Msg.WEBDUINO_LED_MATRIX_CHARACTER_COLOR_TO = "，color of #";

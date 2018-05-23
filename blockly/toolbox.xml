@@ -19,6 +19,7 @@
     </value>
   </block>
   <block type="matrix_off"></block>
+  <block type="matrix_on"></block>
   <block type="matrix_brightness">
     <value name="brightness_">
       <block type="math_number">

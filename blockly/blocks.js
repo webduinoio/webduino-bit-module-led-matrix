@@ -94,7 +94,7 @@ Blockly.Blocks['matrix_brightness'] = {
     this.setHelpUrl('');
   }
 };
-/*
+
 Blockly.Blocks['matrix_off'] = {
   init: function () {
     this.appendDummyInput()
@@ -107,7 +107,20 @@ Blockly.Blocks['matrix_off'] = {
     this.setHelpUrl('');
   }
 };
-*/
+
+Blockly.Blocks['matrix_on'] = {
+  init: function () {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_CLOSE)
+        .appendField(new Blockly.FieldVariable('matrix'), 'matrix_');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(65);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
 Blockly.Blocks['matrix_character'] = {
   init: function () {
     this.appendValueInput('led_')

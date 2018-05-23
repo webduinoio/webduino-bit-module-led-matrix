@@ -1,5 +1,5 @@
 {
-  "types": ["matrix_new", "matrix_color", "matrix_brightness", "matrix_off", "matrix_character"],
+  "types": ["matrix_new", "matrix_color", "matrix_brightness", "matrix_off", "matrix_character", "matrix_on"],
   "category": "toolbox",
   "scripts": [
     "blockly/blocks.js",

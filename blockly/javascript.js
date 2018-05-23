@@ -50,6 +50,8 @@ Blockly.JavaScript['matrix_off'] = function (block) {
 
 Blockly.JavaScript['matrix_character'] = function (block) {
   var variable_matrix_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('matrix_'), Blockly.Variables.NAME_TYPE);
-  var code = variable_matrix_ + '.off();\n';
+  var value_led_ = Blockly.JavaScript.valueToCode(block, 'led_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_color_ = Blockly.JavaScript.valueToCode(block, 'color_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = '.off();\n';
   return code;
 };

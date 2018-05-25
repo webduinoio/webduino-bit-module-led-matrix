@@ -47,3 +47,21 @@ Blockly.JavaScript['matrix_off'] = function (block) {
   var code = variable_matrix_ + '.off();\n';
   return code;
 };
+
+Blockly.JavaScript['matrix_character'] = function(block) {
+  var variable_matrix_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('matrix_'), Blockly.Variables.NAME_TYPE);
+  var value_char_ = Blockly.JavaScript.valueToCode(block, 'char_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_color_ = Blockly.JavaScript.valueToCode(block, 'color_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = variable_matrix_ + '.setCharacter(' + value_char_ + ', ' + value_color_ + ');\n';
+  return code;
+};
+
+Blockly.JavaScript['matrix_string'] = function(block) {
+  var variable_matrix_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('matrix_'), Blockly.Variables.NAME_TYPE);
+  var value_str_ = Blockly.JavaScript.valueToCode(block, 'str_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_color_ = Blockly.JavaScript.valueToCode(block, 'color_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_speed_ = block.getFieldValue('speed_');
+  var code = variable_matrix_ + '.setString(' + value_str_ + ', ' + value_color_ +  ', ' + value_speed_ + ');\n';
+  return code;
+};
+

@@ -108,11 +108,17 @@ Blockly.Blocks['matrix_off'] = {
   }
 };
 
-Blockly.Blocks['matrix_on'] = {
+Blockly.Blocks['matrix_character'] = {
   init: function () {
-    this.appendDummyInput()
-        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_CLOSE)
-        .appendField(new Blockly.FieldVariable('matrix'), 'matrix_');
+    this.appendValueInput('char_')
+        .setCheck(null)
+        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_LED_SET)
+        .appendField(new Blockly.FieldVariable('matrix'), 'matrix_')
+        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_CHARACTER_SHOW);
+    this.appendValueInput('color_')
+        .setCheck(null)
+        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_CHARACTER_COLOR_TO);
+    this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(65);
@@ -121,16 +127,26 @@ Blockly.Blocks['matrix_on'] = {
   }
 };
 
-Blockly.Blocks['matrix_character'] = {
+Blockly.Blocks['matrix_string'] = {
   init: function () {
-    this.appendValueInput('led_')
-        .setCheck('Number')
+    this.appendValueInput('str_')
+        .setCheck(null)
         .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_LED_SET)
         .appendField(new Blockly.FieldVariable('matrix'), 'matrix_')
-        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_LED_NUMBER);
+        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_STRING_SHOW);
     this.appendValueInput('color_')
         .setCheck(null)
-        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_LED_COLOR_TO);
+        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_CHARACTER_COLOR_TO);
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_STRING_SPEED)
+        .appendField(new Blockly.FieldDropdown([
+          ["150", "0"],
+          ["200", "1"],
+          ["250", "2"],
+          ["500", "3"],
+          ["1000", "4"]
+        ]), 'speed_')
+        .appendField("ms");    
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -138,4 +154,6 @@ Blockly.Blocks['matrix_character'] = {
     this.setTooltip('');
     this.setHelpUrl('');
   }
-};                                                                                                                                                             
+};
+
+

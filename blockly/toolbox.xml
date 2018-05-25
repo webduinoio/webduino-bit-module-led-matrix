@@ -18,6 +18,7 @@
       </block>
     </value>
   </block>
+  <block type="matrix_off"></block>
   <block type="matrix_brightness">
     <value name="brightness_">
       <block type="math_number">
@@ -26,9 +27,9 @@
     </value>
   </block>
   <block type="matrix_character">
-    <value name="led_">
-      <block type="math_number">
-        <field name="NUM">1</field>
+    <value name="char_">
+      <block type="text">
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="color_">
@@ -36,5 +37,20 @@
         <field name="COLOUR">#ff0000</field>
       </block>
     </value>
-  </block>   
+  </block>
+  <block type="matrix_string">
+    <value name="str_">
+      <block type="text">
+        <field name="TEXT">Hello the world.</field>
+      </block>
+    </value>
+    <value name="color_">
+      <block type="colour_picker">
+        <field name="COLOUR">#ff0000</field>
+      </block>
+    </value>
+    <value name="speed_">
+      <field name="detectTime_">200</field>
+    </value>
+  </block>  
 </category>

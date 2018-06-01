@@ -22,7 +22,7 @@
   <block type="matrix_brightness">
     <value name="brightness_">
       <block type="math_number">
-        <field name="NUM">60</field>
+        <field name="NUM">10</field>
       </block>
     </value>
   </block>

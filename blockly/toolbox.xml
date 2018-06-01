@@ -26,4 +26,29 @@
       </block>
     </value>
   </block>
+  <block type="matrix_character">
+    <value name="char_">
+      <block type="text">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="color_">
+      <block type="colour_picker">
+        <field name="COLOUR">#ff0000</field>
+      </block>
+    </value>
+  </block>
+  <block type="matrix_string">
+    <value name="str_">
+      <block type="text">
+        <field name="TEXT">Hello the world.</field>
+      </block>
+    </value>
+    <value name="color_">
+      <block type="colour_picker">
+        <field name="COLOUR">#ff0000</field>
+      </block>
+    </value>
+    <field name="speed_">1</field>
+  </block>  
 </category>

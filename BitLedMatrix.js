@@ -127,14 +127,14 @@
   }
 
   proto.setCharacter = function (character, color) {
-    var charMap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!=~@abcdefghijklmnopqrstuvwxyz+/-* ";
-
-    if(charMap.indexOf(character) == -1) {
-      return;
-    }
-
+    var charMap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!=~@abcdefghijklmnopqrstuvwxyz+/-*0123456789"; // ~ = :) , @ = (heart)
     var data = '';
     var cmd = [0xF0, 0x04, 0x21, 0x04];
+
+    if (charMap.indexOf(character) === -1 || !color) {
+      return;
+    }
+    
     data = data.concat(color.substring(1));
     for (var i = 0; i < data.length; i++) {
       cmd.push(data.charCodeAt(i));

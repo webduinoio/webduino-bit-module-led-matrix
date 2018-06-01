@@ -49,8 +49,6 @@
         <field name="COLOUR">#ff0000</field>
       </block>
     </value>
-    <value name="speed_">
-      <field name="detectTime_">200</field>
-    </value>
+    <field name="speed_">1</field>
   </block>  
 </category>

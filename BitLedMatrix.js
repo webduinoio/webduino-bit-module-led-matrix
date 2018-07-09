@@ -131,6 +131,7 @@
     var data = '';
     var cmd = [0xF0, 0x04, 0x21, 0x04];
 
+    character = String(character);
     if (charMap.indexOf(character) === -1 || !color) {
       return;
     }
@@ -146,20 +147,15 @@
   }
 
   proto.setString = function (str, color, speed) {
-/* 
-    var charMap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!=~@abcdefghijklmnopqrstuvwxyz+/-* ";
-
-    if(charMap.indexOf(character) == -1) {
-      return;
-    }
-*/
     var data = '';
     var cmd = [0xF0, 0x04, 0x21, 0x05];
+    
     data = data.concat(color.substring(1));
     for (var i = 0; i < data.length; i++) {
       cmd.push(data.charCodeAt(i));
     }
     cmd.push(speed);
+    str = String(str);
     for (var i = 0; i < str.length; i++) {
       cmd.push(str.charCodeAt(i));
     }

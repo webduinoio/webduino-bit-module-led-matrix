@@ -1,7 +1,9 @@
 {
   "name": "webduino-bit-module-led-matrix",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "LED Matrix Module for Webduino:bit",
+  "repository": "https://github.com/webduinoio/webduino-bit-module-led-matrix.git",
+  "homepage": "https://webduino.io",
   "main": "BitLedMatrix.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

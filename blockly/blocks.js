@@ -124,6 +124,13 @@ Blockly.Blocks['matrix_character'] = {
     this.setColour(65);
     this.setTooltip('');
     this.setHelpUrl('');
+  },
+  onchange: function (evt) {
+    var block = this.getInputTargetBlock('char_'); // or this.getInput('char_').connection.targetBlock();
+    var fd = block.getField(evt.name);
+    if (evt.type === Blockly.Events.CHANGE && fd && evt.newValue.length > 1) {
+      fd.setValue(evt.newValue[0]);
+    }
   }
 };
 

@@ -127,7 +127,7 @@
   }
 
   proto.setCharacter = function (character, color) {
-    var charMap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!=~@abcdefghijklmnopqrstuvwxyz+/-*0123456789"; // ~ = :) , @ = (heart)
+    var charMap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!=~@abcdefghijklmnopqrstuvwxyz+/-*\",\'<>.0123456789"; // ~ = :) , @ = (heart)
     var data = '';
     var cmd = [0xF0, 0x04, 0x21, 0x04];
 
@@ -156,14 +156,13 @@
     }
     cmd.push(speed);
     str = String(str);
-    for (var i = 0; i < str.length; i++) {
+    for (var i = 0; i < str.length && i < 54; i++) {
       cmd.push(str.charCodeAt(i));
     }
     cmd.push(0xF7);
     this._board.send(cmd);
     this._board.flush();
   }
-
 
   scope.module.Matrix = Matrix;
 }));

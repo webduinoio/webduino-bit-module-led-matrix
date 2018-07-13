@@ -124,13 +124,6 @@ Blockly.Blocks['matrix_character'] = {
     this.setColour(65);
     this.setTooltip('');
     this.setHelpUrl('');
-  },
-  onchange: function (evt) {
-    var block = this.getInputTargetBlock('char_'); // or this.getInput('char_').connection.targetBlock();
-    var fd = block.getField(evt.name);
-    if (evt.type === Blockly.Events.CHANGE && fd && evt.newValue.length > 1) {  
-      fd.setValue(evt.newValue[0]);
-    }
   }
 };
 
@@ -143,7 +136,7 @@ Blockly.Blocks['matrix_string'] = {
         .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_STRING_SHOW);
     this.appendValueInput('color_')
         .setCheck(null)
-        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_CHARACTER_COLOR_TO);
+        .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_STRING_COLOR_TO);
     this.appendDummyInput()
         .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_STRING_SPEED)
         .appendField(new Blockly.FieldDropdown([

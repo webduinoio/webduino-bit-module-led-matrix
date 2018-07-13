@@ -7,5 +7,5 @@ Blockly.Msg.WEBDUINO_LED_MATRIX_LED_COLOR_TO = "LED to";
 Blockly.Msg.WEBDUINO_LED_MATRIX_CLOSE = "Turn off";
 Blockly.Msg.WEBDUINO_LED_MATRIX_CHARACTER_SHOW = "Show character";
 Blockly.Msg.WEBDUINO_LED_MATRIX_CHARACTER_COLOR_TO = "color of #";
-Blockly.Msg.WEBDUINO_LED_MATRIX_STRING_SHOW = "Playing String";
+Blockly.Msg.WEBDUINO_LED_MATRIX_STRING_SHOW = "Marquee";
 Blockly.Msg.WEBDUINO_LED_MATRIX_STRING_SPEED = "speed of";

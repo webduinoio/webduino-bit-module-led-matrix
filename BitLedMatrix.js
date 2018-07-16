@@ -130,9 +130,14 @@
     var charMap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!=~@abcdefghijklmnopqrstuvwxyz+/-*\",\'<>.0123456789"; // ~ = :) , @ = (heart)
     var data = '';
     var cmd = [0xF0, 0x04, 0x21, 0x04];
+    var ch = '';
 
-    character = String(character);
-    if (charMap.indexOf(character) === -1 || !color) {
+    if (character) {
+      ch = String(character);
+      ch = Array.from(ch).shift();
+    }
+    
+    if (charMap.indexOf(ch) === -1 || !color) {
       return;
     }
     
@@ -140,7 +145,7 @@
     for (var i = 0; i < data.length; i++) {
       cmd.push(data.charCodeAt(i));
     }
-    cmd.push(character.charCodeAt(0));
+    cmd.push(ch.charCodeAt(0));
     cmd.push(0xF7);
     this._board.send(cmd);
     this._board.flush();

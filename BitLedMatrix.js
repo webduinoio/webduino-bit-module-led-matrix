@@ -14,6 +14,7 @@
   var sendAck = '';
   var sendCallback;
   var Module = scope.Module;
+  var BoardEvent = scope.BoardEvent;
   var _backlight;
 
   function Matrix(board, pin, leds) {
@@ -31,7 +32,7 @@
       cmd = [0xF0, 0x04, 0x21, 0x4 /*init*/ , h6bit, l6bit, pin, 0xF7];
     }
     board.send(cmd);
-    board.on(webduino.BoardEvent.SYSEX_MESSAGE,
+    board.on(BoardEvent.SYSEX_MESSAGE,
       function (event) {
         var m = event.message;
       });

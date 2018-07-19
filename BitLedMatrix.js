@@ -172,7 +172,6 @@
 
   proto.setColor = function(data){
     let draw = (e,c) =>{
-      console.log(e);
       let colorArray = [];
       for(let i=0; i<25; i++){
         let index;
@@ -182,18 +181,43 @@
           index = i.toString(16);
         }
         if(e[i]){
-          let checkLength = e[i].length - 6;
           let a = e[i];
-          if(checkLength<0){
-            for(let j=0; j<(checkLength*-1); j++){
-              a = a + '0';
+          if(a.length < 6){
+            if(a.length == 3){
+              let b = a.split('');
+              let long = '';
+              b.map((t)=>{
+                long = long + t + t;
+              });
+              a = long;
+            }else{
+              for(let j=0; j<a.length; j++){
+                a = a + '0';
+              }
             }
-          }else if(checkLength>0){
+          }else if(a.length > 6){
             a = a.slice(0, 6);
           }
           colorArray[i] = index + a;
         }else{
-          colorArray[i] = index + c;
+          let a = c[0];
+          if(a.length < 6){
+            if(a.length == 3){
+              let b = a.split('');
+              let long = '';
+              b.map((t)=>{
+                long = long + t + t;
+              });
+              a = long;
+            }else{
+              for(let j=0; j<a.length; j++){
+                a = a + '0';
+              }
+            }
+          }else if(a.length > 6){
+            a = a.slice(0, 6);
+          }
+          colorArray[i] = index + a;
         }
       }
       return colorArray.join().replace(/,/g,'');
@@ -205,7 +229,7 @@
       let colorArr = data.replace(/\[|\]|\'|\"| |#|/g,'').split(',');
       let outputData;
       if(colorArr.length>1){
-        outputData = draw(colorArr,'000000');
+        outputData = draw(colorArr,['000000']);
       }else{
         if(colorArr[0].length==200 && colorArr[0].indexOf('0f')!=-1){
           outputData = colorArr[0];
@@ -213,6 +237,7 @@
           outputData = draw(colorArr,colorArr);
         }
       }
+      console.log(outputData);
       return outputData;
     }
     this.setColorString(colorCodeGen(data));

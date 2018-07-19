@@ -52,7 +52,7 @@
     }
   });
 
-  proto.setColorString = function (led, color) {
+  proto.setColorByString = function (led, color) {
     if (led > 64) {
       this.setColor64(led, color);
       return;
@@ -237,10 +237,9 @@
           outputData = draw(colorArr,colorArr);
         }
       }
-      console.log(outputData);
       return outputData;
     }
-    this.setColorString(colorCodeGen(data));
+    this.setColorByString(colorCodeGen(data));
   }
 
   scope.module.Matrix = Matrix;

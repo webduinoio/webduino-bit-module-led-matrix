@@ -5,7 +5,12 @@
       <block type="matrix_new"></block>
     </value>
   </block>
-  <block type="matrix_color"></block>
+  <block type="matrix_color_output">
+    <value name="color_input">
+      <block type="matrix_color_array"></block>
+    </value>
+  </block>
+  <block type="matrix_color_array"></block>
   <block type="matrix_color_single">
     <value name="led_">
       <block type="math_number">

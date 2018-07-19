@@ -156,4 +156,63 @@ Blockly.Blocks['matrix_string'] = {
   }
 };
 
+Blockly.Blocks['matrix_color_output'] = {
+    init: function () {
+        this.appendValueInput("color_input")
+            .setCheck(null)
+            .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_LED_SET)
+            .appendField(new Blockly.FieldVariable("matrix"), "matrix_")
+            .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_CHARACTER_COLOR_TO);
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(65);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+
+Blockly.Blocks['matrix_color_array'] = {
+    init: function () {
+      this.appendDummyInput()
+          .appendField(Blockly.Msg.WEBDUINO_LED_MATRIX_LED_SELECT_COLOR)
+          // Warninig: This name (mcolor_) must not be changed!
+          .appendField(new Blockly.CustomFieldColour('#ffffff'), 'mcolor_');
+      this.appendDummyInput()
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_0_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_1_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_2_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_3_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_4_');
+      this.appendDummyInput()
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_5_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_6_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_7_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_8_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_9_');
+      this.appendDummyInput()
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_10_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_11_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_12_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_13_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_14_');
+      this.appendDummyInput()
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_15_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_16_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_17_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_18_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_19_');
+      this.appendDummyInput()
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_20_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_21_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_22_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_23_')
+          .appendField(new Blockly.CustomFieldCheckbox('#000000'), 'led_24_');
+      this.setColour(35);
+      this.setOutput(true, null);
+      this.setTooltip('');
+      this.setHelpUrl('');
+    }
+  };
 

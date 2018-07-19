@@ -52,7 +52,7 @@
     }
   });
 
-  proto.setColor = function (led, color) {
+  proto.setColorString = function (led, color) {
     if (led > 64) {
       this.setColor64(led, color);
       return;
@@ -168,6 +168,54 @@
     cmd.push(0xF7);
     this._board.send(cmd);
     this._board.flush();
+  }
+
+  proto.setColor = function(data){
+    let draw = (e,c) =>{
+      console.log(e);
+      let colorArray = [];
+      for(let i=0; i<25; i++){
+        let index;
+        if (i < 16) {
+          index = '0' + i.toString(16);
+        } else {
+          index = i.toString(16);
+        }
+        if(e[i]){
+          let checkLength = e[i].length - 6;
+          let a = e[i];
+          if(checkLength<0){
+            for(let j=0; j<(checkLength*-1); j++){
+              a = a + '0';
+            }
+          }else if(checkLength>0){
+            a = a.slice(0, 6);
+          }
+          colorArray[i] = index + a;
+        }else{
+          colorArray[i] = index + c;
+        }
+      }
+      return colorArray.join().replace(/,/g,'');
+    } 
+    let colorCodeGen = (data) => {
+      if(Array.isArray(data)){
+        data = data.join();
+      }
+      let colorArr = data.replace(/\[|\]|\'|\"| |#|/g,'').split(',');
+      let outputData;
+      if(colorArr.length>1){
+        outputData = draw(colorArr,'000000');
+      }else{
+        if(colorArr[0].length==200 && colorArr[0].indexOf('0f')!=-1){
+          outputData = colorArr[0];
+        }else{
+          outputData = draw(colorArr,colorArr);
+        }
+      }
+      return outputData;
+    }
+    this.setColorString(colorCodeGen(data));
   }
 
   scope.module.Matrix = Matrix;

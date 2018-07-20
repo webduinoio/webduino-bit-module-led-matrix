@@ -171,6 +171,26 @@
   }
 
   proto.setColor = function(data){
+    let markup = (m) =>{
+      let a = m;
+      if(m.length < 6){
+        if(m.length == 3){
+          let b = a.split('');
+          let long = '';
+          b.map((t)=>{
+            long = long + t + t;
+          });
+          a = long;
+        }else{
+          for(let j=0; j<(6-m.length); j++){
+            a = a + '0';
+          }
+        }
+      }else if(m.length > 6){
+        a = m.slice(0, 6);
+      }
+      return a;
+    }
     let draw = (e,c) =>{
       let colorArray = [];
       for(let i=0; i<25; i++){
@@ -181,43 +201,9 @@
           index = i.toString(16);
         }
         if(e[i]){
-          let a = e[i];
-          if(a.length < 6){
-            if(a.length == 3){
-              let b = a.split('');
-              let long = '';
-              b.map((t)=>{
-                long = long + t + t;
-              });
-              a = long;
-            }else{
-              for(let j=0; j<a.length; j++){
-                a = a + '0';
-              }
-            }
-          }else if(a.length > 6){
-            a = a.slice(0, 6);
-          }
-          colorArray[i] = index + a;
+          colorArray[i] = index + markup(e[i]);
         }else{
-          let a = c[0];
-          if(a.length < 6){
-            if(a.length == 3){
-              let b = a.split('');
-              let long = '';
-              b.map((t)=>{
-                long = long + t + t;
-              });
-              a = long;
-            }else{
-              for(let j=0; j<a.length; j++){
-                a = a + '0';
-              }
-            }
-          }else if(a.length > 6){
-            a = a.slice(0, 6);
-          }
-          colorArray[i] = index + a;
+          colorArray[i] = index + markup(c[0]);;
         }
       }
       return colorArray.join().replace(/,/g,'');
@@ -237,8 +223,10 @@
           outputData = draw(colorArr,colorArr);
         }
       }
+      outputData = outputData.slice(0, 200);
       return outputData;
     }
+
     this.setColorByString(colorCodeGen(data));
   }
 

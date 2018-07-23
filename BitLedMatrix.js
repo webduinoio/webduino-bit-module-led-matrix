@@ -64,12 +64,25 @@
       this.setColorByPiece(data);
       return;
     } else {
+      var R = color.substring(1,3);
+      var G = color.substring(3,5);
+      var B = color.substring(5,7);
+      
+      var RG24 = (((parseInt(R,16)>>6)&0x3)<<4) | (parseInt(G,16)>>4);
+      var RB24 = (((parseInt(R,16)>>4)&0x3)<<4) | (parseInt(B,16)>>4);
+
+      cmd.push(led);
+      cmd.push(RG24);
+      cmd.push(RB24);
+    }
+/*
       data = data.concat(toHex(led));
       data = data.concat(color.substring(1));
     }
     for (var i = 0; i < data.length; i++) {
       cmd.push(data.charCodeAt(i))
     }
+*/
     cmd.push(0xF7);
     this._board.send(cmd);
     this._board.flush();
@@ -78,6 +91,29 @@
   proto.setColorByPiece = function (allData) {
     var self = this;
 
+    function sendPiece(data) {
+      var cmd = [0xF0, 0x04, 0x21, 0x03];
+      cmd.push(0x40);
+      for (var i = 0; i < data.length; i+=8) {
+       var led = data.substring(i,i+2);
+        var R = data.substring(i+2,i+4);
+        var G = data.substring(i+4,i+6);
+        var B = data.substring(i+6,i+8);
+      
+        var RG24 = (((parseInt(R,16)>>6)&0x3)<<4) | (parseInt(G,16)>>4);
+        var RB24 = (((parseInt(R,16)>>4)&0x3)<<4) | (parseInt(B,16)>>4);
+
+        cmd.push(RG24);
+        cmd.push(RB24);
+      }
+      cmd.push(0xF7);
+      self._board.send(cmd);
+      self._board.flush();
+    }
+
+    // the maximum packet size is 64 bytes
+    sendPiece(allData);
+/*
     function sendPiece(data) {
       var cmd = [0xF0, 0x04, 0x21, 0x03];
       for (var i = 0; i < data.length; i++) {
@@ -92,6 +128,7 @@
     sendPiece(allData.substring(56, 112));
     sendPiece(allData.substring(112, 168));
     sendPiece(allData.substring(168));
+*/
   }
 
   proto.setColor64 = function (led, color) {
@@ -143,7 +180,7 @@
     }
     
     data = data.concat(color.substring(1));
-    for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i < data.length && i < 54; i++) {
       cmd.push(data.charCodeAt(i));
     }
     cmd.push(ch.charCodeAt(0));

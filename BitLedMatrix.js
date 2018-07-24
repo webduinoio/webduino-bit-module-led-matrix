@@ -207,7 +207,7 @@
     this._board.flush();
   }
 
-  proto.setColor = function(data){
+  proto.setColor = function(data, color){
     if (arguments.length == 2) {
       this.setColorByString(data, color);
     } else {

@@ -208,63 +208,67 @@
   }
 
   proto.setColor = function(data){
-    let markup = (m) =>{
-      let a = m;
-      if(m.length < 6){
-        if(m.length == 3){
-          let b = a.split('');
-          let long = '';
-          b.map((t)=>{
-            long = long + t + t;
-          });
-          a = long;
-        }else{
-          for(let j=0; j<(6-m.length); j++){
-            a = a + '0';
+    if (arguments.length == 2) {
+      this.setColorByString(data, color);
+    } else {
+      let markup = (m) =>{
+        let a = m;
+        if(m.length < 6){
+          if(m.length == 3){
+            let b = a.split('');
+            let long = '';
+            b.map((t)=>{
+              long = long + t + t;
+            });
+            a = long;
+          }else{
+            for(let j=0; j<(6-m.length); j++){
+              a = a + '0';
+            }
+          }
+        }else if(m.length > 6){
+          a = m.slice(0, 6);
+        }
+        return a;
+      }
+      let draw = (e,c) =>{
+        let colorArray = [];
+        for(let i=0; i<25; i++){
+          let index;
+          if (i < 16) {
+            index = '0' + i.toString(16);
+          } else {
+            index = i.toString(16);
+          }
+          if(e[i]){
+            colorArray[i] = index + markup(e[i]);
+          }else{
+            colorArray[i] = index + markup(c[0]);;
           }
         }
-      }else if(m.length > 6){
-        a = m.slice(0, 6);
-      }
-      return a;
-    }
-    let draw = (e,c) =>{
-      let colorArray = [];
-      for(let i=0; i<25; i++){
-        let index;
-        if (i < 16) {
-          index = '0' + i.toString(16);
-        } else {
-          index = i.toString(16);
+        return colorArray.join().replace(/,/g,'');
+      } 
+      let colorCodeGen = (data) => {
+        if(Array.isArray(data)){
+          data = data.join();
         }
-        if(e[i]){
-          colorArray[i] = index + markup(e[i]);
+        let colorArr = data.replace(/\[|\]|\'|\"| |#|/g,'').split(',');
+        let outputData;
+        if(colorArr.length>1){
+          outputData = draw(colorArr,['000000']);
         }else{
-          colorArray[i] = index + markup(c[0]);;
+          if(colorArr[0].length==200 && colorArr[0].indexOf('0f')!=-1){
+            outputData = colorArr[0];
+          }else{
+            outputData = draw(colorArr,colorArr);
+          }
         }
+        outputData = outputData.slice(0, 200);
+        return outputData;
       }
-      return colorArray.join().replace(/,/g,'');
-    } 
-    let colorCodeGen = (data) => {
-      if(Array.isArray(data)){
-        data = data.join();
-      }
-      let colorArr = data.replace(/\[|\]|\'|\"| |#|/g,'').split(',');
-      let outputData;
-      if(colorArr.length>1){
-        outputData = draw(colorArr,['000000']);
-      }else{
-        if(colorArr[0].length==200 && colorArr[0].indexOf('0f')!=-1){
-          outputData = colorArr[0];
-        }else{
-          outputData = draw(colorArr,colorArr);
-        }
-      }
-      outputData = outputData.slice(0, 200);
-      return outputData;
-    }
 
-    this.setColorByString(colorCodeGen(data));
+      this.setColorByString(colorCodeGen(data));
+    }
   }
 
   scope.module.Matrix = Matrix;

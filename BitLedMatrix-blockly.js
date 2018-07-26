@@ -1,9 +1,14 @@
-+(function (window, webduino) {
++(function (factory) {
+  if (typeof exports === 'undefined') {
+    factory(window, window.webduino);
+  } else {
+    module.exports = factory;
+  }
+}(function (scope, webduino) {
 
   'use strict';
 
-  window.getMatrix = function (board, pin, leds) {
+  scope.getMatrix = function (board, pin, leds) {
     return new webduino.module.Matrix(board, pin, leds);
   };
-
-}(window, window.webduino));
+}));

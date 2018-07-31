@@ -7,7 +7,53 @@
   </block>
   <block type="matrix_color_output">
     <value name="color_input">
-      <block type="matrix_color_array"></block>
+      <block type="lists_create_with">
+        <mutation items="3"></mutation>
+        <value name="ADD0">
+          <block type="colour_picker">
+            <field name="COLOUR">#ff0000</field>
+          </block>
+        </value>
+        <value name="ADD1">
+          <block type="colour_picker">
+            <field name="COLOUR">#ff0000</field>
+          </block>
+        </value>
+        <value name="ADD2">
+          <block type="colour_picker">
+            <field name="COLOUR">#ff0000</field>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+  <block type="matrix_color_output">
+    <value name="color_input">
+      <block type="lists_create_with">
+        <mutation items="3"></mutation>
+        <value name="ADD0">
+          <block type="text">
+            <field name="TEXT">#ff0000</field>
+          </block>
+        </value>
+        <value name="ADD1">
+          <block type="text">
+            <field name="TEXT">#ff0000</field>
+          </block>
+        </value>
+        <value name="ADD2">
+          <block type="text">
+            <field name="TEXT">#ff0000</field>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+  <block type="matrix_color_output">
+    <value name="color_input">
+      <block type="text">
+        <field name="TEXT">00ff000001ff000002ff0000</field>
+      </block>
     </value>
   </block>
   <block type="matrix_color_array"></block>

@@ -1,6 +1,6 @@
 # webduino-bit-module-led-matrix
 
-Module for Webduino:bit LED Matrix.
+Module for LED matrix of Webduino:bit.
 
 ## ⚠️ Note
 

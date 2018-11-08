@@ -1,4 +1,4 @@
-<category id="catLedMatrix" index="9">
+<category id="catLedMatrix" index="1">
   <block type="variables_set">
     <field name="VAR">matrix</field>
     <value name="VALUE">
@@ -7,6 +7,21 @@
   </block>
   <block type="matrix_color_output">
     <value name="color_input">
+      <block type="colour_picker"></block>
+    </value>
+  </block>
+  <block type="matrix_color_output">
+    <value name="color_input">
+      <block type="matrix_color_array"></block>
+    </value>
+  </block>
+  <block type="matrix_color_output">
+    <value name="color_input">
+      <block type="matrix_emoji"></block>
+    </value>
+  </block>
+  <block type="matrix_color_output">
+    <value name="color_input">
       <block type="lists_create_with">
         <mutation items="3"></mutation>
         <value name="ADD0">
@@ -27,36 +42,21 @@
       </block>
     </value>
   </block>
-  <block type="matrix_color_output">
-    <value name="color_input">
-      <block type="lists_create_with">
-        <mutation items="3"></mutation>
-        <value name="ADD0">
-          <block type="text">
-            <field name="TEXT">#ff0000</field>
-          </block>
-        </value>
-        <value name="ADD1">
-          <block type="text">
-            <field name="TEXT">#ff0000</field>
-          </block>
-        </value>
-        <value name="ADD2">
-          <block type="text">
-            <field name="TEXT">#ff0000</field>
-          </block>
-        </value>
+  <block type="matrix_xy">
+    <value name="x">
+      <block type="math_number">
+        <field name="NUM">1</field>
       </block>
     </value>
-  </block>
-  <block type="matrix_color_output">
-    <value name="color_input">
-      <block type="text">
-        <field name="TEXT">00ff000001ff000002ff0000</field>
+    <value name="y">
+      <block type="math_number">
+        <field name="NUM">1</field>
       </block>
     </value>
+    <value name="color_input">
+      <block type="colour_picker"></block>
+    </value>
   </block>
-  <block type="matrix_color_array"></block>
   <block type="matrix_color_single">
     <value name="led_">
       <block type="math_number">

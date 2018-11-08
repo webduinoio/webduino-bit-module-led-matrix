@@ -94,3 +94,35 @@ Blockly.JavaScript['matrix_color_array'] = function (block) {
   let code = '"' + leds + '"';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
+
+Blockly.JavaScript['matrix_xy'] = function(block) {
+  let variable_name = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+  let value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
+  let value_y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
+  let value_color_input = Blockly.JavaScript.valueToCode(block, 'color_input', Blockly.JavaScript.ORDER_ATOMIC);
+  let num = value_x-1+(value_y-1)*5;
+  let code = variable_name + '.setColor(' + num + ', ' + value_color_input + ');\n';
+  return code;
+};
+
+Blockly.JavaScript['matrix_emoji'] = function(block) {
+  let dropdown_emoji = block.getFieldValue('emoji');
+  let colour_color = block.getFieldValue('color');
+  let emoji = '';
+  dropdown_emoji = dropdown_emoji.split('');
+  colour_color = colour_color.replace('#','');
+  dropdown_emoji.forEach((e,i)=>{
+    let str = i.toString(16);
+    if (parseInt(i) < 16) {
+      str = '0' + str;
+    }
+    if(e<1){
+      e = str + '000000';
+    }else{
+      e = str + colour_color;
+    }
+    emoji = emoji + e;
+  });
+  var code = '"' + emoji + '"';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};

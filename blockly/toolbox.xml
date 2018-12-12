@@ -1,4 +1,4 @@
-<category id="catLedMatrix" index="1">
+<category id="catLedMatrix" tags="bit" index="1">
   <block type="variables_set">
     <field name="VAR">matrix</field>
     <value name="VALUE">

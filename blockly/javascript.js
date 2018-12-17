@@ -100,8 +100,7 @@ Blockly.JavaScript['matrix_xy'] = function(block) {
   let value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
   let value_y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
   let value_color_input = Blockly.JavaScript.valueToCode(block, 'color_input', Blockly.JavaScript.ORDER_ATOMIC);
-  let num = value_x-1+(value_y-1)*5;
-  let code = variable_name + '.setColor(' + num + ', ' + value_color_input + ');\n';
+  let code = variable_name + '.setColor((' + value_x + ' - 1 + ( ' + value_y + ' - 1) * 5 ), ' + value_color_input + ');\n';
   return code;
 };
 

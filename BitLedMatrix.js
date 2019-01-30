@@ -12,6 +12,9 @@
   var Module = scope.Module;
   var BoardEvent = scope.BoardEvent;
   var _backlight;
+  var MatrixEvent = {
+    STRING_ONCE: 'string_once'
+  };
 
   function Matrix(board, pin, leds) {
     Module.call(this);
@@ -31,6 +34,17 @@
     board.on(BoardEvent.SYSEX_MESSAGE,
       function (event) {
         var m = event.message;
+        var cmd = '';
+        if (m instanceof Array) {
+          cmd = m.join(',');
+        }
+        switch (cmd) {
+          case '4,33,6':
+            self.emit(MatrixEvent.STRING_ONCE);
+            break;
+          default:
+            break;
+        }
       });
   }
 
@@ -151,6 +165,12 @@
     this._board.flush();
   }
 
+  /**
+   * 跑馬燈 (無限多次)
+   * @param {string} str
+   * @param {string} color
+   * @param {number} speed - 0 ~ 4，延遲時間 0: 150, 1: 200, 2: 250, 3: 500, 4: 1000 (ms)
+   */
   proto.setString = function (str, color, speed) {
     var data = '';
     var cmd = [0xF0, 0x04, 0x21, 0x05];
@@ -168,6 +188,40 @@
     this._board.send(cmd);
     this._board.flush();
   }
+
+  /**
+   * 跑馬燈 (單次)
+   * @param {string} str
+   * @param {string} color
+   * @param {number} speed - 0 ~ 4，延遲時間 0: 150, 1: 200, 2: 250, 3: 500, 4: 1000 (ms)
+   */
+  proto.setStringOnce = function (str, color, speed, cb) {
+    var data = '';
+    var cmd = [0xF0, 0x04, 0x21, 0x06];
+    var self = this;
+
+    cb = cb || function () { };
+
+    data = data.concat(color.substring(1));
+    for (var i = 0; i < data.length; i++) {
+      cmd.push(data.charCodeAt(i));
+    }
+    cmd.push(speed);
+    str = String(str);
+    for (var i = 0; i < str.length && i < 54; i++) {
+      cmd.push(str.charCodeAt(i));
+    }
+    cmd.push(0xF7);
+    this._board.send(cmd);
+    this._board.flush();
+
+    return new Promise(function (resolve) {
+      self.once(MatrixEvent.STRING_ONCE, function () {
+        cb();
+        resolve();
+      });
+    });
+  };
 
   proto.setColor = function (data, color) {
     if (arguments.length == 2) {
